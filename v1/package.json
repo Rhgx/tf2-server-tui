@@ -16,7 +16,7 @@
     "tui"
   ],
   "author": "",
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "dependencies": {
     "@types/node": "^25.0.8",
     "@types/react": "^19.2.8",

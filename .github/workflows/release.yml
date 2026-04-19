@@ -1,0 +1,98 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build ${{ matrix.goos }}-${{ matrix.goarch }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - goos: windows
+            goarch: amd64
+            runner: windows-latest
+            binary_name: tf2-server-tui.exe
+            artifact_name: tf2-server-tui-windows-amd64
+            archive_name: tf2-server-tui-windows-amd64.zip
+          - goos: linux
+            goarch: amd64
+            runner: ubuntu-latest
+            binary_name: tf2-server-tui
+            artifact_name: tf2-server-tui-linux-amd64
+            archive_name: tf2-server-tui-linux-amd64.tar.gz
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Build binary
+        shell: bash
+        run: |
+          mkdir -p dist/${{ matrix.artifact_name }}
+          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} \
+            go build -trimpath -ldflags="-s -w" \
+            -o dist/${{ matrix.artifact_name }}/${{ matrix.binary_name }} .
+          cp LICENSE dist/${{ matrix.artifact_name }}/LICENSE
+          cp README.md dist/${{ matrix.artifact_name }}/README.md
+          cp servers.example.json dist/${{ matrix.artifact_name }}/servers.example.json
+
+      - name: Package Windows archive
+        if: matrix.goos == 'windows'
+        shell: pwsh
+        run: |
+          Compress-Archive `
+            -Path "dist/${{ matrix.artifact_name }}/*" `
+            -DestinationPath "dist/${{ matrix.archive_name }}"
+
+      - name: Package Linux archive
+        if: matrix.goos == 'linux'
+        shell: bash
+        run: |
+          tar -C dist/${{ matrix.artifact_name }} \
+            -czf dist/${{ matrix.archive_name }} .
+
+      - name: Upload packaged artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: dist/${{ matrix.archive_name }}
+
+  release:
+    name: Publish release
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download packaged artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-artifacts
+
+      - name: Generate checksums
+        shell: bash
+        run: |
+          find release-artifacts -type f -exec sha256sum {} \; > release-artifacts/checksums.txt
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release-artifacts/**/*.zip
+            release-artifacts/**/*.tar.gz
+            release-artifacts/checksums.txt
+          generate_release_notes: true

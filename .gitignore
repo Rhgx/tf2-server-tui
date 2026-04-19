@@ -1,6 +1,12 @@
 node_modules/
 dist/
+v1/node_modules/
+v1/dist/
 .env
 .tf2-server-tui.lock
+servers.json
 tf2-server-tui.exe
 tf2-server-tui
+tf2-server-tui-*
+*.test
+coverage.out

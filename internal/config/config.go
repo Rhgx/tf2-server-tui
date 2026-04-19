@@ -82,6 +82,26 @@ func Reload(path string) (Config, error) {
 	return defaultConfig, err
 }
 
+// Save writes cfg back to path using the same JSON shape the app loads at
+// startup, keeping the on-disk file simple for users to edit manually.
+func Save(path string, cfg Config) error {
+	if path == "" {
+		return errors.New("missing config path")
+	}
+
+	if cfg.RefreshInterval <= 0 {
+		cfg.RefreshInterval = defaultConfig.RefreshInterval
+	}
+
+	content, err := json.MarshalIndent(cfg, "", "  ")
+	if err != nil {
+		return err
+	}
+
+	content = append(content, '\n')
+	return os.WriteFile(path, content, 0o644)
+}
+
 // loadFromPath parses one JSON config file and drops obviously invalid server
 // rows so a single bad entry does not make the whole config unusable.
 func loadFromPath(path string) (Config, error) {
