@@ -72,7 +72,7 @@ This project is licensed under GPL v3. See `LICENSE` for the repository license 
 
 ## Configuration
 
-`servers.json` is local user config and is not tracked in git. The app auto-creates it on first run if missing.
+`servers.json` is the local user config. The app auto-creates it on first run if missing.
 
 The repo includes `servers.example.json` as a reference:
 
