@@ -16,7 +16,6 @@ A native Go terminal UI for browsing Team Fortress 2 servers, checking live stat
 - Keyboard-navigable server list with auto-refresh
 - Launch via `steam://connect/<ip>:<port>` on Enter
 - In-app settings screen for saved servers, imports, and refresh interval
-- Single portable native binary with no Node.js or runtime dependency
 
 ## Install Go
 
@@ -81,14 +80,14 @@ The repo includes `servers.example.json` as a reference:
 {
   "servers": [
     {
-      "ip": "141.95.110.33",
+      "ip": "185.25.148.67",
       "port": 27015,
-      "label": "castaway.tf | Germany"
+      "label": "Example Server #1 | Germany"
     },
     {
-      "ip": "162.120.2.24",
-      "port": 1045,
-      "label": "Zesty Vanilla Server | Germany"
+      "ip": "208.78.164.142",
+      "port": 27015,
+      "label": "Example Server #2 | USA"
     }
   ],
   "refreshInterval": 60

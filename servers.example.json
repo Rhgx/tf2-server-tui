@@ -1,19 +1,19 @@
 {
   "servers": [
     {
-      "ip": "141.95.110.33",
+      "ip": "185.25.148.67",
       "port": 27015,
-      "label": "castaway.tf | Germany"
+      "label": "Example Server #1 | Germany"
     },
     {
-      "ip": "162.120.2.24",
-      "port": 1045,
-      "label": "Zesty Vanilla Server | Germany"
+      "ip": "208.78.164.142",
+      "port": 27015,
+      "label": "Example Server #2 | USA"
     },
     {
-      "ip": "173.240.150.168",
-      "port": 27045,
-      "label": "Zesty Vanilla Server | London"
+      "ip": "193.29.103.45",
+      "port": 27015,
+      "label": "Example Server #3 | London"
     }
   ],
   "refreshInterval": 60
