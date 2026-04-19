@@ -2,7 +2,8 @@
 
 [![Go Version](https://img.shields.io/badge/Go-1.26%2B-00ADD8?logo=go&logoColor=white)](https://go.dev/dl/)
 [![TF2](https://img.shields.io/badge/Team%20Fortress%202-CF6A32?logo=steam&logoColor=white)](https://store.steampowered.com/app/440/Team_Fortress_2/)
-[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-lightgrey)](#build)
+[![Windows](https://img.shields.io/badge/Windows-0078D6?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0yIDBoMjB2MjJIMFYyYTIgMiAwIDAgMSAyLTJaIi8+PHBhdGggZD0iTTI2IDBoMjBhMiAyIDAgMCAxIDIgMnYyMEgyNloiLz48cGF0aCBkPSJNMCAyNmgyMnYyMkgyYTIgMiAwIDAgMS0yLTJaIi8+PHBhdGggZD0iTTI2IDI2aDIydjIwYTIgMiAwIDAgMS0yIDJIMjZaIi8+PC9zdmc+)](#build)
+[![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black)](#build)
 [![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
 
 A native Go terminal UI for browsing Team Fortress 2 servers, checking live status, and launching directly into TF2 through Steam.
