@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.env
+.tf2-server-tui.lock
+tf2-server-tui.exe
+tf2-server-tui

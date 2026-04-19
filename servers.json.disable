@@ -1,0 +1,20 @@
+{
+  "servers": [
+    {
+      "ip": "141.95.110.33",
+      "port": 27015,
+      "label": "castaway.tf | Germany"
+    },
+    {
+      "ip": "162.120.2.24",
+      "port": 1045,
+      "label": "Zesty Vanilla Server | Germany"
+    },
+    {
+      "ip": "173.240.150.168",
+      "port": 27045,
+      "label": "Zesty Vanilla Server | London"
+    }
+  ],
+  "refreshInterval": 60
+}

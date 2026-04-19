@@ -1,0 +1,15 @@
+{
+  "servers": [
+    {
+      "ip": "135.125.189.220",
+      "port": 27015,
+      "label": "Uncletopia | FRK | All Maps - RED"
+    },
+    {
+      "ip": "135.125.189.220",
+      "port": 27085,
+      "label": "Uncletopia | FRK | 5CP"
+    }
+  ],
+  "refreshInterval": 60
+}
